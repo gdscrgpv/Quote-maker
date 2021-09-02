@@ -4,4 +4,18 @@
   font-size: 1.25rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid teal;;
+  
 }
+
+button{
+  width: 20%;
+  padding:10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  background-color: teal;
+  color: white;
+  font-weight: 600;
+
+}
+
