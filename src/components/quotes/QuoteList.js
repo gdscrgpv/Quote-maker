@@ -16,16 +16,17 @@ const sortQuote = (quotes, newQuote) => {
 const QuoteList = (props) => {
   const history = useHistory();
   const location = useLocation();
-  console.log(location);
-
-  
 
   const queryParams = new URLSearchParams(location.search);
   const queryIsNew = queryParams.get("sort") === "new";
-  const sortedQuote = sortQuote(props.quotes,queryIsNew )
+  const sortedQuote = sortQuote(props.quotes, queryIsNew);
 
   const changeSortingHandler = () => {
-    history.push("/quotes?sort=" + (queryIsNew ? "old" : "new"));
+    history.push({
+      pathname:location.pathname,
+      search:`?sort=${(queryIsNew ? "old" : "new")}`
+    })
+    // history.push("/quotes?sort=" + (queryIsNew ? "old" : "new"));
   };
 
   return (
