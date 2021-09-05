@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const MainNavigation = (props) => {
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>Great Quotes</div>
+      <div className={classes.logo}>Quote Maker</div>
       <nav className={classes.nav}>
         <ul>
           <li>

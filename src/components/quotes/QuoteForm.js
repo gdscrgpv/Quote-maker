@@ -6,6 +6,7 @@ import { Prompt } from "react-router";
 
 const QuoteForm = (props) => {
   const [isEntering, SetIsEntering] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(true);
   const authorInputRef = useRef();
   const textInputRef = useRef();
 
@@ -14,20 +15,27 @@ const QuoteForm = (props) => {
 
     const enteredAuthor = authorInputRef.current.value;
     const enteredText = textInputRef.current.value;
+     
+    if(enteredText.length===0){
+      setIsEmpty(true)
+      return;
+    }
 
     // optional: Could validate here
 
+    if(enteredText.length>0){
+      setIsEmpty(false);
     props.onAddQuote({ author: enteredAuthor, text: enteredText });
+    }
   }
 
   const onFocusHandler = () => {
-    
     SetIsEntering(true);
   };
 
-  const isEntered = ()=>{
-    SetIsEntering(false)
-  }
+  const isEntered = () => {
+    SetIsEntering(false);
+  };
 
   return (
     <>
@@ -57,8 +65,11 @@ const QuoteForm = (props) => {
             <label htmlFor="text">Text</label>
             <textarea id="text" rows="5" ref={textInputRef}></textarea>
           </div>
+          {isEmpty && <p>*This feild is required</p> }
           <div className={classes.actions}>
-            <button onClick={isEntered} className="btn">Add Quote</button>
+            <button onClick={isEntered} className="btn">
+              Add Quote
+            </button>
           </div>
         </form>
       </Card>
